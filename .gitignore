@@ -1,4 +1,5 @@
 target/
+*.log
 
 ### STS ###
 .apt_generated
@@ -21,3 +22,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/*.log

@@ -7,6 +7,7 @@ import com.company.project.model.LearnResource;
 import com.company.project.service.LearnResourceService;
 import com.company.project.core.AbstractService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
