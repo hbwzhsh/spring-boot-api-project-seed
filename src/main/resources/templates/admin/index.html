@@ -14,12 +14,13 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" ></script>
     <script src="../../static/lib/layui/layui.js" charset="utf-8" th:href="@{/lib/layui/layui.js}"></script>
     <script type="text/javascript" src="../../static/js/xadmin.js" th:href="@{/js/xadmin.js}"></script>
+    <script type="text/javascript" src="../../static/js/xadmin.js" th:href="@{/}"></script>
 
 </head>
 <body>
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="./index.html">XXX后台管理</a></div>
+        <div class="logo"><a th:href="@{/index}">XXX后台管理</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>

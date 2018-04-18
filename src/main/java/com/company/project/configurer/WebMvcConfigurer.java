@@ -23,6 +23,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.method.HandlerMethod;
@@ -31,6 +32,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
 
 /**
  * Spring MVC 配置
@@ -67,8 +70,8 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/toLogin").setViewName("login");
-        super.addViewControllers(registry);
+        //registry.addViewController("/toLogin").setViewName("login");
+        //super.addViewControllers(registry);
     }
 
     //使用阿里 FastJson 作为JSON MessageConverter
@@ -82,6 +85,21 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         converter.setFastJsonConfig(config);
         converter.setDefaultCharset(Charset.forName("UTF-8"));
         converters.add(converter);
+    }
+
+    /**
+     * 模板解析引擎
+     * @return
+     */
+    @Bean
+    public TemplateResolver templateResolver(){
+        TemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setPrefix("/WEB-INF/template/");//设置地址前缀
+        resolver.setSuffix(".html");//设置后缀
+        resolver.setCacheable(false);//设置不缓存
+        resolver.setTemplateMode("HTML5");
+        return resolver;
+
     }
 
 
