@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -46,11 +47,26 @@ public class UserController {
         return ResultGenerator.genSuccessResult(user);
     }
 
-    @PostMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
+    @PostMapping("/list1")
+    public Result list1(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<User> list = userService.findAll();
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
+    @RequestMapping("/list")
+    public ModelAndView list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
+        ModelAndView modelAndView = new ModelAndView("admin/user/user-list");
+
+        PageHelper.startPage(page, size);
+        List<User> list = userService.findAll();
+        PageInfo pageInfo = new PageInfo(list);
+
+        modelAndView.addObject("rows",  pageInfo.getList());
+        modelAndView.addObject("currentPage",  pageInfo.getPageNum());
+        modelAndView.addObject("total",  pageInfo.getTotal());
+        modelAndView.addObject("records",  pageInfo.getTotal());
+        return modelAndView;
     }
 }
