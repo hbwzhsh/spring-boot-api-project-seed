@@ -148,6 +148,17 @@
             <artifactId>nekohtml</artifactId>
             <version>1.9.22</version>
         </dependency>
+        <!-- 邮件服务依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.17</version>
+        </dependency>
         <!-- maven添加本地jar -->
         <!--
         <dependency>

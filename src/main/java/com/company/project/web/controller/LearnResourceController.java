@@ -1,4 +1,4 @@
-package com.company.project.web;
+package com.company.project.web.controller;
 import com.company.project.core.Page;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
